@@ -4,15 +4,23 @@
 
 import 'dotenv/config';
 import express from 'express';
-import apiRoutes from './routes/api';
-import publicRoutes from './routes/public';
-import { database, setDatabaseMode, getDatabaseMode, DatabaseMode } from './database';
-import { connectToMongoDB, getConnectionStatus } from './config/database';
+import cors from "cors";
+import apiRoutes from "./routes/api";
+import publicRoutes from "./routes/public";
+import {
+  database,
+  setDatabaseMode,
+  getDatabaseMode,
+  DatabaseMode,
+} from "./database";
+import { connectToMongoDB, getConnectionStatus } from "./config/database";
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
 // Middleware
+// Enable CORS for all origins
+app.use(cors());
 app.use(express.json());
 
 // Add request logging middleware

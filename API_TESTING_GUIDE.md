@@ -9,7 +9,7 @@
 ### Base URL
 ```
 Local: http://localhost:3000
-Production: https://your-app.onrender.com
+Production: https://titoproof-backend-4yxb.onrender.com
 ```
 
 ---
@@ -18,7 +18,7 @@ Production: https://your-app.onrender.com
 
 ### cURL
 ```bash
-curl https://your-app.onrender.com/health
+curl https://titoproof-backend-4yxb.onrender.com/health
 ```
 
 ### Postman
@@ -45,7 +45,7 @@ URL: {{baseUrl}}/health
 
 ### cURL
 ```bash
-curl -X POST https://your-app.onrender.com/api/verify/generate-token \
+curl -X POST https://titoproof-backend-4yxb.onrender.com/api/verify/generate-token \
   -H "Content-Type: application/json" \
   -d '{
     "domain": "example.com",
@@ -114,7 +114,7 @@ curl -X POST https://your-app.onrender.com/api/verify/verify-domain \
 Method: POST
 URL: {{baseUrl}}/api/verify/verify-domain
 Headers: Content-Type: application/json
-Body (raw JSON):
+Body:
 {
   "domain": "example.com",
   "method": "DNS_TXT",
@@ -181,7 +181,7 @@ curl -X POST https://your-app.onrender.com/api/verify/verify-domain \
 Method: POST
 URL: {{baseUrl}}/api/verify/verify-domain
 Headers: Content-Type: application/json
-Body (raw JSON):
+Body:
 {
   "domain": "example.com",
   "method": "HTML_META",
@@ -195,7 +195,7 @@ Body (raw JSON):
 
 ### cURL
 ```bash
-curl https://your-app.onrender.com/api/verify/status/example.com
+curl https://titoproof-backend-4yxb.onrender.com/api/verify/status/example.com
 ```
 
 ### Postman
@@ -238,7 +238,7 @@ URL: {{baseUrl}}/api/verify/status/example.com
 
 ### cURL
 ```bash
-curl -X POST https://your-app.onrender.com/api/verify/email-domain \
+curl -X POST https://titoproof-backend-4yxb.onrender.com/api/verify/email-domain \
   -H "Content-Type: application/json" \
   -d '{
     "email": "user@example.com",
@@ -288,7 +288,7 @@ Body (raw JSON):
 
 ### Browser
 ```
-https://your-app.onrender.com/verify/example.com
+https://titoproof-backend-4yxb.onrender.com/verify/example.com
 ```
 
 یہ ایک HTML page return کرتا ہے جس پر domain کی verification status دکھائی دیتی ہے۔
@@ -304,8 +304,8 @@ https://your-app.onrender.com/verify/example.com
 3. Name: `TitoProof API`
 4. **Variables** tab:
    - Variable: `baseUrl`
-   - Initial Value: `http://localhost:3000`
-   - Current Value: `https://your-app.onrender.com`
+   - Initial Value: `https://titoproof-backend-4yxb.onrender.com`
+   - Current Value: `https://titoproof-backend-4yxb.onrender.com`
 
 ### Add Requests
 
@@ -314,6 +314,7 @@ https://your-app.onrender.com/verify/example.com
 Name: Health Check
 Method: GET
 URL: {{baseUrl}}/health
+Example: https://titoproof-backend-4yxb.onrender.com/health
 ```
 
 #### Request 2: Generate Token
@@ -321,6 +322,7 @@ URL: {{baseUrl}}/health
 Name: Generate Token
 Method: POST
 URL: {{baseUrl}}/api/verify/generate-token
+Example: https://titoproof-backend-4yxb.onrender.com/api/verify/generate-token
 Headers: Content-Type: application/json
 Body:
 {
@@ -334,6 +336,7 @@ Body:
 Name: Verify Domain - DNS
 Method: POST
 URL: {{baseUrl}}/api/verify/verify-domain
+Example: https://titoproof-backend-4yxb.onrender.com/api/verify/verify-domain
 Headers: Content-Type: application/json
 Body:
 {
@@ -348,6 +351,7 @@ Body:
 Name: Verify Domain - HTML
 Method: POST
 URL: {{baseUrl}}/api/verify/verify-domain
+Example: https://titoproof-backend-4yxb.onrender.com/api/verify/verify-domain
 Headers: Content-Type: application/json
 Body:
 {
@@ -362,6 +366,7 @@ Body:
 Name: Get Domain Status
 Method: GET
 URL: {{baseUrl}}/api/verify/status/example.com
+Example: https://titoproof-backend-4yxb.onrender.com/api/verify/status/example.com
 ```
 
 #### Request 6: Verify Email
@@ -369,6 +374,7 @@ URL: {{baseUrl}}/api/verify/status/example.com
 Name: Verify Email Domain
 Method: POST
 URL: {{baseUrl}}/api/verify/email-domain
+Example: https://titoproof-backend-4yxb.onrender.com/api/verify/email-domain
 Headers: Content-Type: application/json
 Body:
 {
@@ -480,7 +486,7 @@ LOG_LEVEL=verbose
 ```bash
 #!/bin/bash
 
-BASE_URL="https://your-app.onrender.com"
+BASE_URL="https://titoproof-backend-4yxb.onrender.com"
 DOMAIN="example.com"
 
 # 1. Health Check
@@ -503,7 +509,7 @@ curl -s "$BASE_URL/api/verify/status/$DOMAIN" | jq
 
 echo -e "\n✅ Basic tests complete!"
 echo "Now add the token to your DNS/HTML and run:"
-echo "curl -X POST $BASE_URL/api/verify/verify-domain -H 'Content-Type: application/json' -d '{\"domain\":\"$DOMAIN\",\"method\":\"DNS_TXT\",\"token\":\"$TOKEN\"}'"
+echo "curl -X POST https://titoproof-backend-4yxb.onrender.com/api/verify/verify-domain -H 'Content-Type: application/json' -d '{\"domain\":\"$DOMAIN\",\"method\":\"DNS_TXT\",\"token\":\"$TOKEN\"}'" "
 ```
 
 **Save as**: `test_api.sh`
